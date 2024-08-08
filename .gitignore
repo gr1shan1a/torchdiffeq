@@ -2,5 +2,5 @@
 .installed.cfg
 *.egg
 *__pycache__*
-.gist/
+.dist/
 .venv/

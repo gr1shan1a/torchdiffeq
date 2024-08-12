@@ -124,8 +124,6 @@ def objective(trial):
     tsave, trace, lmbda, gtid, tsne, loss, mete = forward_pass(func, torch.cat((c0, h0), dim=-1), tspan, dt, TSTE, args.evnt_align)
     visualize(outpath, tsave, trace, lmbda, None, None, tsave[gtid], lmbda_te_real, tsne, range(len(TSTE)), it, appendix="testing")
     print("iter: {}, testing loss: {:10.4f}, type error: {}".format(it, loss.item()/len(TSTE), mete), flush=True)
-
-    
     return loss_meter.avg
 
 
@@ -134,7 +132,6 @@ if __name__ == '__main__':
     study = optuna.create_study(direction='minimize')
     study.optimize(objective, n_trials=50)  
 
-    
     print("Best trial:")
     trial = study.best_trial
     print(f"  Value: {trial.value}")
